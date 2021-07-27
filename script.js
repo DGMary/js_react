@@ -1,83 +1,20 @@
-/* Задание на урок: №3
+/* Задания на урок:
 
-1) Первую часть задания повторить по уроку
+1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
+новый фильм добавляется в список. Страница не должна перезагружаться.
+Новый фильм должен добавляться в movieDB.movies.
+Для получения доступа к значению input - обращаемся к нему как input.value;
+P.S. Здесь есть несколько вариантов решения задачи, принимается любой, но рабочий.
 
-2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
-false - выводит в консоль главный объект программы
+2) Если название фильма больше, чем 21 символ - обрезать его и добавить три точки
 
-3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
-"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
-genres
+3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
 
-P.S. Функции вызывать не обязательно*/
+4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
+"Добавляем любимый фильм"
 
+5) Фильмы должны быть отсортированы по алфавиту */
 
 'use strict';
 
-let numberOfFilms;
-
-function start() {
-    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?' , '');
-
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?' , '');
-    }
-}
-
-start();
-
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false,
-}
-
-function rememberMyFilms() {
-    for (let i = 0; i < 2; i++) {
-        const a = prompt('Один из последних просмотренных фильмов?' , ''),
-              b = +prompt('На сколько оцените его?' , '');
-
-        if ( a != null && b != null && a != '' && b != '' && a.length < 50) {
-            personalMovieDB.movies[a] = b;
-            console.log('done');
-        } else {
-            console.log('error');
-            i--;
-        }
-    }
-}
-
-rememberMyFilms();
-
-function detectPersonalLevel() {
-    if ( personalMovieDB.count < 10) {
-        console.log('Просмотрено довольно мало фильмов');
-    } else if (10 <= personalMovieDB.count <= 30) {
-        console.log('Вы классический зритель');
-    } else if (personalMovieDB.count > 30) {
-        console.log('Вы киноман');
-    } else {
-        console.log('Произошла ошибка');
-    }
-}
-detectPersonalLevel();
-
-
-function showMyDB(hidden) {
-    if(!hidden) {
-        console.log(personalMovieDB);
-    }
-}
-
-showMyDB(personalMovieDB.privat);
-
-function writeYourGenres() {
-    for (let i = 1; i <= 3; i++) {   
-        personalMovieDB.genres[i-1] =prompt(`Ваш любимый жанр под номером ${i}`);
-    }
-}
-writeYourGenres();
-
-
+// Возьмите свой код из предыдущей практики
