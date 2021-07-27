@@ -18,3 +18,12 @@ P.S. Здесь есть несколько вариантов решения з
 'use strict';
 
 // Возьмите свой код из предыдущей практики
+
+console.log('yyy');
+const form = document.querySelector('.add');
+      formBtn = document.querySelector('.add button');
+
+formBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    console.log('test');
+});
